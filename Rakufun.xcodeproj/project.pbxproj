@@ -1,0 +1,407 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D605642A1A05413B009C67C6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D60564291A05413B009C67C6 /* README.md */; };
+		D605642D1A054470009C67C6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D605642B1A054470009C67C6 /* Info.plist */; };
+		D608875F1A04C771008B86B1 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D608875B1A04C769008B86B1 /* DVTKit.framework */; };
+		D60887601A04C771008B86B1 /* IDEFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D608875C1A04C76B008B86B1 /* IDEFoundation.framework */; };
+		D60887611A04C771008B86B1 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D608875D1A04C76D008B86B1 /* IDEKit.framework */; };
+		D60887621A04C771008B86B1 /* IDESourceEditor.ideplugin in Frameworks */ = {isa = PBXBuildFile; fileRef = D608875E1A04C76F008B86B1 /* IDESourceEditor.ideplugin */; };
+		D60887641A04C8F3008B86B1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60887631A04C8F2008B86B1 /* Cocoa.framework */; };
+		D60887661A04C900008B86B1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60887651A04C8FE008B86B1 /* AppKit.framework */; };
+		D60887681A04C94B008B86B1 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60887671A04C949008B86B1 /* DVTFoundation.framework */; };
+		D608876B1A04CDC1008B86B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D608876A1A04CDC1008B86B1 /* Foundation.framework */; };
+		D65094471A0545FC0014E07A /* RakufunPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = D65094461A0545FC0014E07A /* RakufunPlugin.m */; };
+		D650944A1A0546040014E07A /* XcodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D65094491A0546040014E07A /* XcodeHelper.m */; };
+		D65094521A0546180014E07A /* NSString+HM_Extends.m in Sources */ = {isa = PBXBuildFile; fileRef = D650944D1A0546180014E07A /* NSString+HM_Extends.m */; };
+		D65094531A0546180014E07A /* NSString+HM_SourceCode.m in Sources */ = {isa = PBXBuildFile; fileRef = D650944F1A0546180014E07A /* NSString+HM_SourceCode.m */; };
+		D65094541A0546180014E07A /* NSTextView+HM_Extends.m in Sources */ = {isa = PBXBuildFile; fileRef = D65094511A0546180014E07A /* NSTextView+HM_Extends.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D60564291A05413B009C67C6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D605642B1A054470009C67C6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rakufun/Info.plist; sourceTree = SOURCE_ROOT; };
+		D605642C1A054470009C67C6 /* Rakufun.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rakufun.pch; path = Rakufun/Rakufun.pch; sourceTree = SOURCE_ROOT; };
+		D608875B1A04C769008B86B1 /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = ../../../xcodes/DVTKit.framework; sourceTree = "<group>"; };
+		D608875C1A04C76B008B86B1 /* IDEFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEFoundation.framework; path = ../../../xcodes/IDEFoundation.framework; sourceTree = "<group>"; };
+		D608875D1A04C76D008B86B1 /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = ../../../xcodes/IDEKit.framework; sourceTree = "<group>"; };
+		D608875E1A04C76F008B86B1 /* IDESourceEditor.ideplugin */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = IDESourceEditor.ideplugin; path = ../../../xcodes/IDESourceEditor.ideplugin; sourceTree = "<group>"; };
+		D60887631A04C8F2008B86B1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D60887651A04C8FE008B86B1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D60887671A04C949008B86B1 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = /Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<absolute>"; };
+		D608876A1A04CDC1008B86B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D65094431A0545E50014E07A /* XcodeComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XcodeComponents.h; path = Classes/XcodeComponents.h; sourceTree = "<group>"; };
+		D65094451A0545FC0014E07A /* RakufunPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakufunPlugin.h; path = Classes/RakufunPlugin.h; sourceTree = "<group>"; };
+		D65094461A0545FC0014E07A /* RakufunPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RakufunPlugin.m; path = Classes/RakufunPlugin.m; sourceTree = "<group>"; };
+		D65094481A0546040014E07A /* XcodeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XcodeHelper.h; path = Classes/XcodeHelper.h; sourceTree = "<group>"; };
+		D65094491A0546040014E07A /* XcodeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XcodeHelper.m; path = Classes/XcodeHelper.m; sourceTree = "<group>"; };
+		D650944C1A0546180014E07A /* NSString+HM_Extends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HM_Extends.h"; path = "Classes/NSString+HM_Extends.h"; sourceTree = "<group>"; };
+		D650944D1A0546180014E07A /* NSString+HM_Extends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HM_Extends.m"; path = "Classes/NSString+HM_Extends.m"; sourceTree = "<group>"; };
+		D650944E1A0546180014E07A /* NSString+HM_SourceCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HM_SourceCode.h"; path = "Classes/NSString+HM_SourceCode.h"; sourceTree = "<group>"; };
+		D650944F1A0546180014E07A /* NSString+HM_SourceCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HM_SourceCode.m"; path = "Classes/NSString+HM_SourceCode.m"; sourceTree = "<group>"; };
+		D65094501A0546180014E07A /* NSTextView+HM_Extends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTextView+HM_Extends.h"; path = "Classes/NSTextView+HM_Extends.h"; sourceTree = "<group>"; };
+		D65094511A0546180014E07A /* NSTextView+HM_Extends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTextView+HM_Extends.m"; path = "Classes/NSTextView+HM_Extends.m"; sourceTree = "<group>"; };
+		D6E6EDD91A047434002139BF /* Rakufun.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rakufun.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D6E6EDD61A047434002139BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D608876B1A04CDC1008B86B1 /* Foundation.framework in Frameworks */,
+				D60887661A04C900008B86B1 /* AppKit.framework in Frameworks */,
+				D60887641A04C8F3008B86B1 /* Cocoa.framework in Frameworks */,
+				D60887621A04C771008B86B1 /* IDESourceEditor.ideplugin in Frameworks */,
+				D608875F1A04C771008B86B1 /* DVTKit.framework in Frameworks */,
+				D60887681A04C94B008B86B1 /* DVTFoundation.framework in Frameworks */,
+				D60887611A04C771008B86B1 /* IDEKit.framework in Frameworks */,
+				D60887601A04C771008B86B1 /* IDEFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D60887691A04CD5B008B86B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D608876A1A04CDC1008B86B1 /* Foundation.framework */,
+				D60887671A04C949008B86B1 /* DVTFoundation.framework */,
+				D60887651A04C8FE008B86B1 /* AppKit.framework */,
+				D60887631A04C8F2008B86B1 /* Cocoa.framework */,
+				D608875B1A04C769008B86B1 /* DVTKit.framework */,
+				D608875C1A04C76B008B86B1 /* IDEFoundation.framework */,
+				D608875D1A04C76D008B86B1 /* IDEKit.framework */,
+				D608875E1A04C76F008B86B1 /* IDESourceEditor.ideplugin */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D65094411A0545B20014E07A /* Rakufun */ = {
+			isa = PBXGroup;
+			children = (
+				D65094441A0545EB0014E07A /* Classes */,
+				D65094421A0545D30014E07A /* Xcode */,
+				D6E6EDDC1A047434002139BF /* Supporting Files */,
+			);
+			name = Rakufun;
+			sourceTree = "<group>";
+		};
+		D65094421A0545D30014E07A /* Xcode */ = {
+			isa = PBXGroup;
+			children = (
+				D65094431A0545E50014E07A /* XcodeComponents.h */,
+			);
+			name = Xcode;
+			sourceTree = "<group>";
+		};
+		D65094441A0545EB0014E07A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D650944B1A05460A0014E07A /* Categories */,
+				D65094481A0546040014E07A /* XcodeHelper.h */,
+				D65094491A0546040014E07A /* XcodeHelper.m */,
+				D65094451A0545FC0014E07A /* RakufunPlugin.h */,
+				D65094461A0545FC0014E07A /* RakufunPlugin.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		D650944B1A05460A0014E07A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D650944C1A0546180014E07A /* NSString+HM_Extends.h */,
+				D650944D1A0546180014E07A /* NSString+HM_Extends.m */,
+				D650944E1A0546180014E07A /* NSString+HM_SourceCode.h */,
+				D650944F1A0546180014E07A /* NSString+HM_SourceCode.m */,
+				D65094501A0546180014E07A /* NSTextView+HM_Extends.h */,
+				D65094511A0546180014E07A /* NSTextView+HM_Extends.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		D6E6EDD01A047434002139BF = {
+			isa = PBXGroup;
+			children = (
+				D65094411A0545B20014E07A /* Rakufun */,
+				D60564291A05413B009C67C6 /* README.md */,
+				D60887691A04CD5B008B86B1 /* Frameworks */,
+				D6E6EDDA1A047434002139BF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D6E6EDDA1A047434002139BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6E6EDD91A047434002139BF /* Rakufun.xcplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D6E6EDDC1A047434002139BF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D605642B1A054470009C67C6 /* Info.plist */,
+				D605642C1A054470009C67C6 /* Rakufun.pch */,
+			);
+			name = "Supporting Files";
+			path = AutoFuncDeclaration;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D6E6EDD81A047434002139BF /* Rakufun */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6E6EDE01A047434002139BF /* Build configuration list for PBXNativeTarget "Rakufun" */;
+			buildPhases = (
+				D6E6EDD51A047434002139BF /* Sources */,
+				D6E6EDD61A047434002139BF /* Frameworks */,
+				D6E6EDD71A047434002139BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Rakufun;
+			productName = AutoFuncDeclaration;
+			productReference = D6E6EDD91A047434002139BF /* Rakufun.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D6E6EDD11A047434002139BF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Muronaka Hiroaki";
+				TargetAttributes = {
+					D6E6EDD81A047434002139BF = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = D6E6EDD41A047434002139BF /* Build configuration list for PBXProject "Rakufun" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D6E6EDD01A047434002139BF;
+			productRefGroup = D6E6EDDA1A047434002139BF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D6E6EDD81A047434002139BF /* Rakufun */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D6E6EDD71A047434002139BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D605642D1A054470009C67C6 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D6E6EDD51A047434002139BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D605642A1A05413B009C67C6 /* README.md in Sources */,
+				D650944A1A0546040014E07A /* XcodeHelper.m in Sources */,
+				D65094531A0546180014E07A /* NSString+HM_SourceCode.m in Sources */,
+				D65094521A0546180014E07A /* NSString+HM_Extends.m in Sources */,
+				D65094471A0545FC0014E07A /* RakufunPlugin.m in Sources */,
+				D65094541A0546180014E07A /* NSTextView+HM_Extends.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D6E6EDDE1A047434002139BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_DIR)/../Frameworks",
+					"$(DEVELOPER_DIR)/../SharedFrameworks",
+					"$(DEVELOPER_DIR)/../PlugIns",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "/Library/Application Suppport/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		D6E6EDDF1A047434002139BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_DIR)/../Frameworks",
+					"$(DEVELOPER_DIR)/../SharedFrameworks",
+					"$(DEVELOPER_DIR)/../PlugIns",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "/Library/Application Suppport/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+		D6E6EDE11A047434002139BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
+				DSTROOT = "$(HOME)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Frameworks",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/SharedFrameworks",
+					/Users/hmu/xcodes,
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Rakufun/Rakufun.pch;
+				INFOPLIST_FILE = Rakufun/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_NAME = Rakufun;
+				SKIP_INSTALL = NO;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		D6E6EDE21A047434002139BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
+				DSTROOT = "$(HOME)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Frameworks",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/SharedFrameworks",
+					/Users/hmu/xcodes,
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Rakufun/Rakufun.pch;
+				INFOPLIST_FILE = Rakufun/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_NAME = Rakufun;
+				SKIP_INSTALL = NO;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D6E6EDD41A047434002139BF /* Build configuration list for PBXProject "Rakufun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6E6EDDE1A047434002139BF /* Debug */,
+				D6E6EDDF1A047434002139BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6E6EDE01A047434002139BF /* Build configuration list for PBXNativeTarget "Rakufun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6E6EDE11A047434002139BF /* Debug */,
+				D6E6EDE21A047434002139BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D6E6EDD11A047434002139BF /* Project object */;
+}

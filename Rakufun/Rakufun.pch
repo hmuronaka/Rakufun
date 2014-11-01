@@ -1,0 +1,21 @@
+//
+//  Rakufun.pch
+//  Rakufun
+//
+//  Created by Muronaka Hiroaki on 2014/11/02.
+//  Copyright (c) 2014年 Muronaka Hiroaki. All rights reserved.
+//
+
+#ifndef Rakufun_Rakufun_pch
+#define Rakufun_Rakufun_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef DEBUG
+#define DbgLog(...) NSLog(__VA_ARGS__)
+#else
+#define DbgLog(...) do{} while(0)
+#endif
+
+#endif

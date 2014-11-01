@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:AutoFuncDeclaration.xcodeproj">
+      location = "self:Rakufun.xcodeproj">
    </FileRef>
 </Workspace>
