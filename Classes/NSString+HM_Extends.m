@@ -13,6 +13,10 @@
 
 // characterSetで文字列が始まるかどうか
 -(BOOL)ex_isStartChars:(NSString*)characterSet {
+    if( self.length == 0 ) {
+        return NO;
+    }
+    
     NSRange range = NSMakeRange(0, 1);
     NSRange result = [self rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:characterSet] options:0 range:range];
     return result.length > 0;
@@ -41,7 +45,11 @@
     return trimmedStr;
 }
 
+// 複数行対応
 -(NSRange)ex_findWithPattern:(NSString*)pattern fromRange:(NSRange)range {
+//    NSRegularExpression* regexp = [[NSRegularExpression alloc] initWithPattern:pattern options:NSRegularExpressionDotMatchesLineSeparators error:nil];
+//    NSRange result = [regexp rangeOfFirstMatchInString:self options:0 range:range];
+//    return result;
     return  [self rangeOfString:pattern options:NSRegularExpressionSearch range:range];
 }
 

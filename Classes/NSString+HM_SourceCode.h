@@ -11,6 +11,7 @@
 @interface NSString (HM_SourceCode)
 
 -(BOOL)ex_isFuncDefinition;
+-(NSString*)ex_searchFuncDefinition;
 -(NSString*)ex_toDeclaration;
 -(NSString*)ex_className;
 -(BOOL)ex_hasNotFunctionDeclaration:(NSString*)functionDeclaration inClass:(NSString*)className;

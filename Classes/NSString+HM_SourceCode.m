@@ -30,6 +30,14 @@
     return YES;
 }
 
+//// 指定された位置から上に向かって、関数定義を探す。
+//// あればその文字列を返し、なければnilを返す。
+//-(NSString*)ex_searchFuncDefinition:(NSRange)currentPos {
+//    // とりあえず{か}を下に向かって探す。
+//    
+//}
+//
+
 // 関数定義に;を付けて、宣言にする。
 -(NSString*)ex_toDeclaration {
     // expect [self isFuncDefinition] == YES
