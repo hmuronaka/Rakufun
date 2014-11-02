@@ -20,6 +20,8 @@ Rakufunをダウンロードして、Xcodeにてコンパイルして、Xcodeを
 
 # 使い方
 
+![rakufun.gif](Screenshots/rakufun.gif)
+
 ソースファイル(m, mm)の関数定義文で、CTRL+mを行うと、ヘッダーファイルにその関数の
 関数宣言を作成します。
 

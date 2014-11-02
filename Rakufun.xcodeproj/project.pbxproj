@@ -17,6 +17,7 @@
 		D60887661A04C900008B86B1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60887651A04C8FE008B86B1 /* AppKit.framework */; };
 		D60887681A04C94B008B86B1 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60887671A04C949008B86B1 /* DVTFoundation.framework */; };
 		D608876B1A04CDC1008B86B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D608876A1A04CDC1008B86B1 /* Foundation.framework */; };
+		D63880B21A05F30F00ED1A29 /* rakufun.gif in Resources */ = {isa = PBXBuildFile; fileRef = D63880B11A05F30F00ED1A29 /* rakufun.gif */; };
 		D65094471A0545FC0014E07A /* RakufunPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = D65094461A0545FC0014E07A /* RakufunPlugin.m */; };
 		D650944A1A0546040014E07A /* XcodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D65094491A0546040014E07A /* XcodeHelper.m */; };
 		D65094521A0546180014E07A /* NSString+HM_Extends.m in Sources */ = {isa = PBXBuildFile; fileRef = D650944D1A0546180014E07A /* NSString+HM_Extends.m */; };
@@ -36,6 +37,7 @@
 		D60887651A04C8FE008B86B1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D60887671A04C949008B86B1 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = /Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<absolute>"; };
 		D608876A1A04CDC1008B86B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D63880B11A05F30F00ED1A29 /* rakufun.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = rakufun.gif; path = Screenshots/rakufun.gif; sourceTree = "<group>"; };
 		D65094431A0545E50014E07A /* XcodeComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XcodeComponents.h; path = Classes/XcodeComponents.h; sourceTree = "<group>"; };
 		D65094451A0545FC0014E07A /* RakufunPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakufunPlugin.h; path = Classes/RakufunPlugin.h; sourceTree = "<group>"; };
 		D65094461A0545FC0014E07A /* RakufunPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RakufunPlugin.m; path = Classes/RakufunPlugin.m; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D63880B01A05F2E000ED1A29 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				D63880B11A05F30F00ED1A29 /* rakufun.gif */,
+			);
+			name = Screenshots;
+			sourceTree = "<group>";
+		};
 		D65094411A0545B20014E07A /* Rakufun */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 		D6E6EDD01A047434002139BF = {
 			isa = PBXGroup;
 			children = (
+				D63880B01A05F2E000ED1A29 /* Screenshots */,
 				D65094411A0545B20014E07A /* Rakufun */,
 				D60564291A05413B009C67C6 /* README.md */,
 				D60887691A04CD5B008B86B1 /* Frameworks */,
@@ -212,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D605642D1A054470009C67C6 /* Info.plist in Resources */,
+				D63880B21A05F30F00ED1A29 /* rakufun.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
