@@ -47,10 +47,9 @@
 
 // 複数行対応
 -(NSRange)ex_findWithPattern:(NSString*)pattern fromRange:(NSRange)range {
-//    NSRegularExpression* regexp = [[NSRegularExpression alloc] initWithPattern:pattern options:NSRegularExpressionDotMatchesLineSeparators error:nil];
-//    NSRange result = [regexp rangeOfFirstMatchInString:self options:0 range:range];
-//    return result;
-    return  [self rangeOfString:pattern options:NSRegularExpressionSearch range:range];
+    NSRegularExpression* regexp = [[NSRegularExpression alloc] initWithPattern:pattern options:NSRegularExpressionDotMatchesLineSeparators error:nil];
+    NSRange result = [regexp rangeOfFirstMatchInString:self options:0 range:range];
+    return result;
 }
 
 -(NSRange)ex_findWithPattern:(NSString*)pattern {
