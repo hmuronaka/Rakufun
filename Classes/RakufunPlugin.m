@@ -95,27 +95,33 @@ static RakufunPlugin* _sharedInstance = nil;
         return;
     }
     
+    IDESourceCodeDocument* document = [XcodeHelper currentDocument];
+    NSString* pathExtension = [document.fileURL.absoluteString pathExtension];
+    DbgLog(@"fileType=%@", pathExtension);
+    if( ![self isTargetExtension:pathExtension] ) {
+        return;
+    }
+    
+    
     // ソースコードの情報を取得する
     NSString* currentLine = [textView ex_currentLine];
     DbgLog(@"currentLine=%@", currentLine);
     DbgLog(@"isFunc?=%d", [currentLine ex_isFuncDefinition]);
-    IDESourceCodeDocument* document = [XcodeHelper currentDocument];
     
-    NSString* pathExtension = [document.fileURL.absoluteString pathExtension];
-    DbgLog(@"fileType=%@", pathExtension);
-    
+   
+    NSString* signatureStr = [textView ex_currentFunctionSignature];
+    DbgLog(@"signature=%@", signatureStr);
     
     // 現在のカーソル行が、関数定義であれば、ヘッダーに関数宣言を追加する
-    if( [currentLine ex_isFuncDefinition] && [self isTargetExtension:pathExtension] ) {
+    if( signatureStr != nil ) {
         // ソースファイルからヘッダーファイルにジャンプ
         [NSApp sendAction:@selector(jumpToPreviousCounterpart:) to:nil from:self];
-        
         
         // ヘッダーを解析する
         NSTextView* headerView = [XcodeHelper currentSourceCodeView];
         NSString* headerText = headerView.textStorage.string;
         NSString* className = [document.fileURL.absoluteString ex_className];
-        NSString* declStr = [currentLine ex_toDeclaration];
+        NSString* declStr = [signatureStr ex_toDeclaration];
         BOOL hasNotFunction = [headerText ex_hasNotFunctionDeclaration:declStr inClass:className];
         DbgLog(@"has decl=%d class=%@", hasNotFunction, className);
         

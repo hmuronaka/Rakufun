@@ -11,10 +11,10 @@
 @interface NSString (HM_SourceCode)
 
 -(BOOL)ex_isFuncDefinition;
--(NSString*)ex_searchFuncDefinition;
 -(NSString*)ex_toDeclaration;
 -(NSString*)ex_className;
 -(BOOL)ex_hasNotFunctionDeclaration:(NSString*)functionDeclaration inClass:(NSString*)className;
 -(NSRange)ex_getClassEndPos:(NSString*)className;
 
+-(NSString*)ex_searchFuncDefinition:(NSInteger)currentPos;
 @end

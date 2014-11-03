@@ -7,6 +7,7 @@
 //
 
 #import "NSTextView+HM_Extends.h"
+#import "NSString+HM_SourceCode.h"
 
 @implementation NSTextView (HM_Extends)
 
@@ -37,6 +38,13 @@
     
     NSString* result = [text substringWithRange:substrRange];
     return result;
+}
+
+// 現在カーソルの位置のシグネチャを取得する
+// 取得できなかったらnilを返す
+-(NSString*)ex_currentFunctionSignature {
+    NSString* text = self.textStorage.string;
+    return [text ex_searchFuncDefinition:[self ex_cursolPosition]];
 }
 
 

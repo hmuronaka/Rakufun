@@ -30,33 +30,42 @@
     return YES;
 }
 
-//// 指定された位置から上に向かって、関数定義を探す。
-//// あればその文字列を返し、なければnilを返す。
-//-(NSString*)ex_searchFuncDefinition:(NSRange)currentPos {
-//    // とりあえず{か}を下に向かって探す。
-//    
-//}
-//
+// 指定された位置から上に向かって、関数定義を探す。
+// あればその文字列を返し、なければnilを返す。
+-(NSString*)ex_searchFuncDefinition:(NSInteger)currentPos {
+    // とりあえず{か}を下に向かって探す。
+    NSRange blockRange = [self ex_findWithPattern:@"[\\{\\}]" fromRange:NSMakeRange(currentPos, self.length - currentPos)];
+    if( RANGE_IS_NOT_FOUND(blockRange) ) {
+        // 終端に設定する
+        blockRange.location = self.length;
+    } else {
+        blockRange.location++;
+    }
+    
+    // 見つかったブロックの位置から上に向かってシグネチャらしきものを探す。
+    NSString* pattern = @"\\s*[-+]\\s*\\(\\s*\\w[^\\)]*\\)\\s*\\w[^\\{]*\\{";
+    NSRange patternRange = [self ex_findWithPattern:pattern fromRange:NSMakeRange(0, blockRange.location) andIsBackwward:YES];
+    if( RANGE_IS_NOT_FOUND(patternRange) ) {
+        return nil;
+    }
+    
+    // シグネチャらしきも文字列を返す
+    NSString* result = [[self substringWithRange:patternRange] ex_trimWhitespaces];
+    return result;
+}
+
 
 // 関数定義に;を付けて、宣言にする。
 -(NSString*)ex_toDeclaration {
-    // expect [self isFuncDefinition] == YES
+    // expect [self isFuncDefinition] == YES or
+    // expect self == [ex_searchFuncDefinition:NSMakeRange(0, self.length)]
     
     NSString* result = nil;
     NSString* trimmedStr = [self ex_trimWhitespaces];
-    
-    // 行中の{を探す
-    if( [trimmedStr ex_hasCharas:@"{" withOption:0]) {
-        result = [trimmedStr ex_replaceFrom:@"\\s*\\{" to:@";"];
-    // コメントらしき/がある場合
-    } else if([trimmedStr ex_hasCharas:@"/" withOption:0]) {
-        result = [trimmedStr ex_replaceFrom:@"\\s*/" to:@"; /"];
-    // それ以外の場合
-    } else {
-        result = [trimmedStr stringByAppendingString:@";"];
-    }
+    result = [trimmedStr ex_replaceFrom:@"\\s*\\{" to:@";"];
     return result;
 }
+
 // ファイルパスからクラス名を抽出する
 -(NSString*)ex_className {
     NSString* result = [self lastPathComponent];

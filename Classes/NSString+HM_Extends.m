@@ -41,14 +41,37 @@
 
 // 前後の空白除去
 -(NSString*)ex_trimWhitespaces {
-    NSString* trimmedStr = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString* trimmedStr = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return trimmedStr;
 }
 
 // 複数行対応
+// backwards時は最後にマッチした結果を返す
 -(NSRange)ex_findWithPattern:(NSString*)pattern fromRange:(NSRange)range {
+    return [self ex_findWithPattern:pattern fromRange:range andIsBackwward:NO];
+}
+
+// 複数行対応
+// backwards時は最後にマッチした結果を返す
+-(NSRange)ex_findWithPattern:(NSString*)pattern fromRange:(NSRange)range andIsBackwward:(BOOL)isBackwards {
     NSRegularExpression* regexp = [[NSRegularExpression alloc] initWithPattern:pattern options:NSRegularExpressionDotMatchesLineSeparators error:nil];
-    NSRange result = [regexp rangeOfFirstMatchInString:self options:0 range:range];
+    NSRange result;
+    // 前方探索
+    if( !isBackwards ) {
+        result = [regexp rangeOfFirstMatchInString:self options:0 range:range];
+    // 後方探索もどき
+    // 最後にマッチした要素を返す
+    } else {
+        NSArray* array = [regexp matchesInString:self options:0 range:range];
+        if( array.count == 0 ) {
+            DbgLog(@"not match!! pattern=%@", pattern);
+            return NSMakeRange(NSNotFound, 0);
+        }
+        DbgLog(@"checkingResults=%@", array);
+        NSTextCheckingResult* checkingResult = [array lastObject];
+        result = [checkingResult rangeAtIndex:0];
+        DbgLog(@"checkingResult=%@", checkingResult);
+    }
     return result;
 }
 

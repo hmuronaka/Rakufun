@@ -10,9 +10,7 @@
 
 @interface RakufunPlugin : NSObject
 
-
 -(instancetype)init;
 
-+(void)pluginDidLoad:(NSBundle*)plugin;
-
++(instancetype)sharedInstance;
 @end

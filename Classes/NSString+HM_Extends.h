@@ -1,4 +1,3 @@
-//
 //  NSString+EX_Extends.h
 //  Rakufun
 //
@@ -19,4 +18,6 @@
 -(BOOL)ex_hasCharas:(NSString*)characterSet withOption:(NSStringCompareOptions)options;
 -(NSString*)ex_replaceFrom:(NSString*)fromStr to:(NSString*)toStr;
 -(NSString*)ex_trimWhitespaces;
+-(NSRange)ex_findWithPattern:(NSString*)pattern fromRange:(NSRange)range;
+-(NSRange)ex_findWithPattern:(NSString*)pattern fromRange:(NSRange)range andIsBackwward:(BOOL)isBackwards;
 @end

@@ -14,8 +14,10 @@
 
 #ifdef DEBUG
 #define DbgLog(...) NSLog(__VA_ARGS__)
+#define DbgLogRange(NAME, RANGE) NSLog(@"%@ {location=%d length=%d}", NAME, (int)RANGE.location, (int)RANGE.length)
 #else
 #define DbgLog(...) do{} while(0)
+#define DbgLogRange(NAME, RANGE) do{} while(0)
 #endif
 
 #endif
