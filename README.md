@@ -1,4 +1,5 @@
-Rakufun 
+[Japanese](README_jp.md)
+# Rakufun 
 
 # Overview
 Rakufun is Xcode plugin that generates a method declaration in a header file from a method definition in a sourcefile.
