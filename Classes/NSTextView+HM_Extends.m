@@ -30,5 +30,11 @@
     return [text ex_searchFuncDefinition:[self ex_cursolPosition]];
 }
 
+-(void)sample {
+    
+}
+-(void)sample2:(NSString*)param {
+    
+}
 
 @end

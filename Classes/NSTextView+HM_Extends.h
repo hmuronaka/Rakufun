@@ -13,4 +13,6 @@
 -(NSInteger)ex_cursolPosition;
 -(NSString*)ex_currentLine;
 -(NSString*)ex_currentFunctionSignature;
+-(void)sample;
+-(void)sample2:(NSString*)param;
 @end
