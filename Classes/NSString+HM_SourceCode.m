@@ -30,8 +30,10 @@
     return YES;
 }
 
-// 指定された位置から上に向かって、関数定義を探す。
-// あればその文字列を返し、なければnilを返す。
+// 指定位置がシグネチャ上であれば、その行のシグネチャを返し、
+// 関数中であれば、その関数のシグネチャを返す
+// 関数外の場合は、下側に探索して見つけたシグネチャを返す。（できれば除外したい）
+// マッチしなければnilを返す。
 -(NSString*)ex_searchFuncDefinition:(NSInteger)currentPos {
     // とりあえず{か}を下に向かって探す。
     NSRange blockRange = [self ex_findWithPattern:@"[\\{\\}]" fromRange:NSMakeRange(currentPos, self.length - currentPos)];
@@ -39,6 +41,7 @@
         // 終端に設定する
         blockRange.location = self.length;
     } else {
+        // {を探索に含めるために+1する
         blockRange.location++;
     }
     
@@ -126,6 +129,5 @@
     NSRange result = [self rangeOfString:@"@end" options:0 range:NSMakeRange(classBeginPos.location, self.length - classBeginPos.location)];
     return result;
 }
-
 
 @end

@@ -79,5 +79,26 @@
     return [self ex_findWithPattern:pattern fromRange:NSMakeRange(0, self.length)];
 }
 
+// 当該位置の1行を取得する
+-(NSString*)ex_getLineFromPos:(NSInteger)pos {
+    // 手前の¥n又は開始位置を探す
+    NSInteger currentPos = pos;
+    NSRange range = NSMakeRange(0, currentPos);
+    NSRange thisLineRange = [self rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet] options:NSBackwardsSearch range:range];
+   
+    NSRange afterRange = NSMakeRange(currentPos, self.length - currentPos);
+    NSRange thisLineEndRange = [self rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet] options:0 range:afterRange];
+    
+    // 改行の次の位置から開始する
+    NSInteger beginPos = (thisLineRange.length > 0) ? thisLineRange.location + 1 : 0;
+    NSInteger endPos = (thisLineEndRange.length > 0) ? thisLineEndRange.location : self.length;
+    NSRange substrRange = NSMakeRange(beginPos, endPos - beginPos);
+    
+    NSString* result = [self substringWithRange:substrRange];
+    return result;
+}
+
+
+
 
 @end

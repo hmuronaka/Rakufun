@@ -102,13 +102,7 @@ static RakufunPlugin* _sharedInstance = nil;
         return;
     }
     
-    
-    // ソースコードの情報を取得する
-    NSString* currentLine = [textView ex_currentLine];
-    DbgLog(@"currentLine=%@", currentLine);
-    DbgLog(@"isFunc?=%d", [currentLine ex_isFuncDefinition]);
-    
-   
+    // シグネチャを取得する
     NSString* signatureStr = [textView ex_currentFunctionSignature];
     DbgLog(@"signature=%@", signatureStr);
     

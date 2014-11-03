@@ -7,37 +7,20 @@
 //
 
 #import "NSTextView+HM_Extends.h"
+#import "NSString+HM_Extends.h"
 #import "NSString+HM_SourceCode.h"
 
 @implementation NSTextView (HM_Extends)
+
 
 -(NSInteger)ex_cursolPosition {
     return [[[self selectedRanges] objectAtIndex:0] rangeValue].location;
 }
 
+// カーソル行を返す
 -(NSString*)ex_currentLine {
-    NSString* line = [self getLineFromPos:[self ex_cursolPosition]];
+    NSString* line = [self.textStorage.string ex_getLineFromPos:[self ex_cursolPosition]];
     return line;
-}
-
-// 当該位置の1行を取得する
--(NSString*)getLineFromPos:(NSInteger)pos {
-    // 手前の¥n又は開始位置を探す
-    NSInteger currentPos = pos;
-    NSRange range = NSMakeRange(0, currentPos);
-    NSString* text = self.textStorage.string;
-    NSRange thisLineRange = [text rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet] options:NSBackwardsSearch range:range];
-   
-    NSRange afterRange = NSMakeRange(currentPos, text.length - currentPos);
-    NSRange thisLineEndRange = [text rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet] options:0 range:afterRange];
-    
-    // 改行の次の位置から開始する
-    NSInteger beginPos = (thisLineRange.length > 0) ? thisLineRange.location + 1 : 0;
-    NSInteger endPos = (thisLineEndRange.length > 0) ? thisLineEndRange.location : text.length;
-    NSRange substrRange = NSMakeRange(beginPos, endPos - beginPos);
-    
-    NSString* result = [text substringWithRange:substrRange];
-    return result;
 }
 
 // 現在カーソルの位置のシグネチャを取得する
