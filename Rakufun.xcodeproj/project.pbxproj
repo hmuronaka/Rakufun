@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D605642A1A05413B009C67C6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D60564291A05413B009C67C6 /* README.md */; };
+		D605642A1A05413B009C67C6 /* README_jp.md in Sources */ = {isa = PBXBuildFile; fileRef = D60564291A05413B009C67C6 /* README_jp.md */; };
 		D605642D1A054470009C67C6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D605642B1A054470009C67C6 /* Info.plist */; };
 		D608875F1A04C771008B86B1 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D608875B1A04C769008B86B1 /* DVTKit.framework */; };
 		D60887601A04C771008B86B1 /* IDEFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D608875C1A04C76B008B86B1 /* IDEFoundation.framework */; };
@@ -17,6 +17,8 @@
 		D60887661A04C900008B86B1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60887651A04C8FE008B86B1 /* AppKit.framework */; };
 		D60887681A04C94B008B86B1 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60887671A04C949008B86B1 /* DVTFoundation.framework */; };
 		D608876B1A04CDC1008B86B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D608876A1A04CDC1008B86B1 /* Foundation.framework */; };
+		D61BCD771A07228200EDFF0F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D61BCD761A07228200EDFF0F /* README.md */; };
+		D61BCD791A07262100EDFF0F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D61BCD781A07262100EDFF0F /* LICENSE */; };
 		D63880B21A05F30F00ED1A29 /* rakufun.gif in Resources */ = {isa = PBXBuildFile; fileRef = D63880B11A05F30F00ED1A29 /* rakufun.gif */; };
 		D65094471A0545FC0014E07A /* RakufunPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = D65094461A0545FC0014E07A /* RakufunPlugin.m */; };
 		D650944A1A0546040014E07A /* XcodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D65094491A0546040014E07A /* XcodeHelper.m */; };
@@ -26,7 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D60564291A05413B009C67C6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D60564291A05413B009C67C6 /* README_jp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_jp.md; sourceTree = "<group>"; };
 		D605642B1A054470009C67C6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rakufun/Info.plist; sourceTree = SOURCE_ROOT; };
 		D605642C1A054470009C67C6 /* Rakufun.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rakufun.pch; path = Rakufun/Rakufun.pch; sourceTree = SOURCE_ROOT; };
 		D608875B1A04C769008B86B1 /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = ../../../xcodes/DVTKit.framework; sourceTree = "<group>"; };
@@ -37,6 +39,8 @@
 		D60887651A04C8FE008B86B1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D60887671A04C949008B86B1 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = /Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<absolute>"; };
 		D608876A1A04CDC1008B86B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D61BCD761A07228200EDFF0F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D61BCD781A07262100EDFF0F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D63880B11A05F30F00ED1A29 /* rakufun.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = rakufun.gif; path = Screenshots/rakufun.gif; sourceTree = "<group>"; };
 		D65094431A0545E50014E07A /* XcodeComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XcodeComponents.h; path = Classes/XcodeComponents.h; sourceTree = "<group>"; };
 		D65094451A0545FC0014E07A /* RakufunPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakufunPlugin.h; path = Classes/RakufunPlugin.h; sourceTree = "<group>"; };
@@ -142,7 +146,9 @@
 			children = (
 				D63880B01A05F2E000ED1A29 /* Screenshots */,
 				D65094411A0545B20014E07A /* Rakufun */,
-				D60564291A05413B009C67C6 /* README.md */,
+				D60564291A05413B009C67C6 /* README_jp.md */,
+				D61BCD761A07228200EDFF0F /* README.md */,
+				D61BCD781A07262100EDFF0F /* LICENSE */,
 				D60887691A04CD5B008B86B1 /* Frameworks */,
 				D6E6EDDA1A047434002139BF /* Products */,
 			);
@@ -222,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61BCD791A07262100EDFF0F /* LICENSE in Resources */,
 				D605642D1A054470009C67C6 /* Info.plist in Resources */,
 				D63880B21A05F30F00ED1A29 /* rakufun.gif in Resources */,
 			);
@@ -234,9 +241,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D605642A1A05413B009C67C6 /* README.md in Sources */,
+				D605642A1A05413B009C67C6 /* README_jp.md in Sources */,
 				D650944A1A0546040014E07A /* XcodeHelper.m in Sources */,
 				D65094531A0546180014E07A /* NSString+HM_SourceCode.m in Sources */,
+				D61BCD771A07228200EDFF0F /* README.md in Sources */,
 				D65094521A0546180014E07A /* NSString+HM_Extends.m in Sources */,
 				D65094471A0545FC0014E07A /* RakufunPlugin.m in Sources */,
 				D65094541A0546180014E07A /* NSTextView+HM_Extends.m in Sources */,
