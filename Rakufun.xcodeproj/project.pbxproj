@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A6F72A61A08E4C900A38876 /* GenerateFuncDefinitionAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6F72A51A08E4C800A38876 /* GenerateFuncDefinitionAction.m */; };
 		D605642A1A05413B009C67C6 /* README_jp.md in Sources */ = {isa = PBXBuildFile; fileRef = D60564291A05413B009C67C6 /* README_jp.md */; };
 		D605642D1A054470009C67C6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D605642B1A054470009C67C6 /* Info.plist */; };
 		D608875F1A04C771008B86B1 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D608875B1A04C769008B86B1 /* DVTKit.framework */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A6F72A41A08E4C800A38876 /* GenerateFuncDefinitionAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GenerateFuncDefinitionAction.h; path = Classes/GenerateFuncDefinitionAction.h; sourceTree = "<group>"; };
+		9A6F72A51A08E4C800A38876 /* GenerateFuncDefinitionAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GenerateFuncDefinitionAction.m; path = Classes/GenerateFuncDefinitionAction.m; sourceTree = "<group>"; };
 		D60564291A05413B009C67C6 /* README_jp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_jp.md; sourceTree = "<group>"; };
 		D605642B1A054470009C67C6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rakufun/Info.plist; sourceTree = SOURCE_ROOT; };
 		D605642C1A054470009C67C6 /* Rakufun.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rakufun.pch; path = Rakufun/Rakufun.pch; sourceTree = SOURCE_ROOT; };
@@ -124,6 +127,8 @@
 				D65094491A0546040014E07A /* XcodeHelper.m */,
 				D65094451A0545FC0014E07A /* RakufunPlugin.h */,
 				D65094461A0545FC0014E07A /* RakufunPlugin.m */,
+				9A6F72A41A08E4C800A38876 /* GenerateFuncDefinitionAction.h */,
+				9A6F72A51A08E4C800A38876 /* GenerateFuncDefinitionAction.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				D65094521A0546180014E07A /* NSString+HM_Extends.m in Sources */,
 				D65094471A0545FC0014E07A /* RakufunPlugin.m in Sources */,
 				D65094541A0546180014E07A /* NSTextView+HM_Extends.m in Sources */,
+				9A6F72A61A08E4C900A38876 /* GenerateFuncDefinitionAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

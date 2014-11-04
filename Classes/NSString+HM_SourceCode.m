@@ -30,6 +30,18 @@
     return YES;
 }
 
+// 現在の文字列が関数プロトタイプかどうか
+-(BOOL)ex_isFunctionDeclaration {
+    // 行頭が-か+かを調べる
+    NSString* trimmedStr = [self ex_trimWhitespaces];
+    if( ![trimmedStr ex_isStartChars:@"+-"] ) {
+        return NO;
+    }
+    
+    // 行中に;が無いことを調べる
+    return [trimmedStr ex_hasCharas:@";" withOption:NSBackwardsSearch];
+}
+
 // 指定位置がシグネチャ上であれば、その行のシグネチャを返し、
 // 関数中であれば、その関数のシグネチャを返す
 // 関数外の場合は、下側に探索して見つけたシグネチャを返す。（できれば除外したい）
@@ -69,6 +81,16 @@
     return result;
 }
 
+// 関数宣言を定義に変換する
+-(NSString*)ex_toDefinition {
+    
+    // 末尾の;を除去して、{にする
+    NSString* signature = [self ex_replaceFrom:@";" to:@" {\n}"];
+    return signature;
+    
+    
+}
+
 // ファイルパスからクラス名を抽出する
 -(NSString*)ex_className {
     NSString* result = [self lastPathComponent];
@@ -88,7 +110,7 @@
 // コメントは無視する。
 -(BOOL)ex_hasNotFunctionDeclaration:(NSString*)functionDeclaration inClass:(NSString*)className {
     
-    NSRange classBeginPos = [self ex_getClassBeginPos:className];
+    NSRange classBeginPos = [self ex_getClassInterfaceBeginPos:className];
     if( RANGE_IS_NOT_FOUND(classBeginPos) ) {
         DbgLog(@"%@ is not found", className);
         return NO;
@@ -101,19 +123,79 @@
     return YES;
 }
 
+// 指定された関数宣言が、クラスのソースコード上に存在しないことを確認する。
+-(BOOL)ex_hasNotFunctionDefinition:(NSString*)functionDeclaration inClass:(NSString*)className {
+    
+    NSRange classBeginPos = [self ex_getClassImplementationBeginPos:className];
+    if( RANGE_IS_NOT_FOUND(classBeginPos) ) {
+        DbgLog(@"%@ is not found", className);
+        return NO;
+    }
+    
+    
+    NSString* signature = [functionDeclaration ex_replaceFrom:@";" to:@"{"];
+    NSRange result = [self rangeOfString:signature];
+    if( RANGE_IS_FOUND(result)) {
+        return NO;
+    }
+    return YES;
+}
+
+// クラス実装の開始位置を取得する
+-(NSRange)ex_getClassImplementationBeginPos:(NSString*)className {
+//    // expect className == "NSString"
+//    // expect className == "NSString+Extends"
+//    NSArray* classNameAndCategory = [className ex_divideClassNameAndCategory];
+//    
+//    NSString* pattern = nil;
+//    if( classNameAndCategory.count >= 2) {
+//        pattern = [NSString stringWithFormat:@"@implementation\\s*%@\\s*\\(\\s*%@\\b\\s*\\)",
+//                   classNameAndCategory[0],
+//                   classNameAndCategory[1]];
+//    } else {
+//        pattern = [NSString stringWithFormat:@"@implementation\\s*%@\\b",
+//                   classNameAndCategory[0]];
+//    }
+//    NSRange range = [self ex_findWithPattern:pattern];
+//    return range;
+    return [self ex_getClassBeginPos:className withKeyword:@"implementation"];
+}
+
 // @interface クラス名の開始位置を返す
--(NSRange)ex_getClassBeginPos:(NSString*)className {
+-(NSRange)ex_getClassInterfaceBeginPos:(NSString*)className {
+//    // expect className == "NSString"
+//    // expect className == "NSString+Extends"
+//    NSArray* classNameAndCategory = [className ex_divideClassNameAndCategory];
+//    
+//    NSString* pattern = nil;
+//    if( classNameAndCategory.count >= 2) {
+//        pattern = [NSString stringWithFormat:@"@interface\\s*%@\\s*\\(\\s*%@\\b\\s*\\)",
+//                   classNameAndCategory[0],
+//                   classNameAndCategory[1]];
+//    } else {
+//        pattern = [NSString stringWithFormat:@"@interface\\s*%@\\b",
+//                   classNameAndCategory[0]];
+//    }
+//    NSRange range = [self ex_findWithPattern:pattern];
+//    return range;
+    return [self ex_getClassBeginPos:className withKeyword:@"interface"];
+}
+
+// strにはinterfaceかimplementationを想定。
+-(NSRange)ex_getClassBeginPos:(NSString*)className withKeyword:(NSString*)keyword {
     // expect className == "NSString"
     // expect className == "NSString+Extends"
     NSArray* classNameAndCategory = [className ex_divideClassNameAndCategory];
     
     NSString* pattern = nil;
     if( classNameAndCategory.count >= 2) {
-        pattern = [NSString stringWithFormat:@"@interface\\s*%@\\s*\\(\\s*%@\\b\\s*\\)",
+        pattern = [NSString stringWithFormat:@"@%@\\s*%@\\s*\\(\\s*%@\\b\\s*\\)",
+                   keyword,
                    classNameAndCategory[0],
                    classNameAndCategory[1]];
     } else {
-        pattern = [NSString stringWithFormat:@"@interface\\s*%@\\b",
+        pattern = [NSString stringWithFormat:@"@%@\\s*%@\\b",
+                   keyword,
                    classNameAndCategory[0]];
     }
     NSRange range = [self ex_findWithPattern:pattern];
@@ -121,13 +203,24 @@
 }
 
 // @endの位置を返す
--(NSRange)ex_getClassEndPos:(NSString*)className {
+-(NSRange)ex_getClassInterfaceEndPos:(NSString*)className {
     // expect className == "NSString"
     // expect className == "NSString+Extends"
     
-    NSRange classBeginPos = [self ex_getClassBeginPos:className];
+    NSRange classBeginPos = [self ex_getClassInterfaceBeginPos:className];
     NSRange result = [self rangeOfString:@"@end" options:0 range:NSMakeRange(classBeginPos.location, self.length - classBeginPos.location)];
     return result;
 }
+
+-(NSRange)ex_getClassImplementationEnd:(NSString*)className {
+    // expect className == "NSString"
+    // expect className == "NSString+Extends"
+    
+    NSRange classBeginPos = [self ex_getClassImplementationBeginPos:className];
+    NSRange result = [self rangeOfString:@"@end" options:0 range:NSMakeRange(classBeginPos.location, self.length - classBeginPos.location)];
+    return result;
+}
+
+
 
 @end

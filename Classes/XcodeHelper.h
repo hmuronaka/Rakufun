@@ -15,4 +15,5 @@
 +(IDESourceCodeDocument*)currentDocument;
 +(NSTextView*)currentSourceCodeView;
 
++(void)moveSourceCode:(id)from;
 @end

@@ -44,4 +44,9 @@
 
 }
 
+// ソースファイルとヘッダーファイル間をジャンプ
++(void)moveSourceCode:(id)from {
+    [NSApp sendAction:@selector(jumpToPreviousCounterpart:) to:nil from:from];
+}
+
 @end

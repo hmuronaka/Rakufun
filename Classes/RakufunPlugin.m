@@ -109,7 +109,7 @@ static RakufunPlugin* _sharedInstance = nil;
     // 現在のカーソル行が、関数定義であれば、ヘッダーに関数宣言を追加する
     if( signatureStr != nil ) {
         // ソースファイルからヘッダーファイルにジャンプ
-        [NSApp sendAction:@selector(jumpToPreviousCounterpart:) to:nil from:self];
+        [XcodeHelper moveSourceCode:self];
         
         // ヘッダーを解析する
         NSTextView* headerView = [XcodeHelper currentSourceCodeView];
@@ -122,14 +122,14 @@ static RakufunPlugin* _sharedInstance = nil;
         // ヘッダーに関数定義が無い場合にのみ追加する
         // *ただしコメントアウト行は考慮しない。
         if(hasNotFunction) {
-            NSRange endPoint = [headerText ex_getClassEndPos:className];
+            NSRange endPoint = [headerText ex_getClassInterfaceEndPos:className];
             if( RANGE_IS_FOUND(endPoint) ) {
                 endPoint.length = 0;
                 [headerView insertText:[declStr stringByAppendingString:@"\n"] replacementRange:endPoint];
             }
         }
         // ソースコードに戻る
-        [NSApp sendAction:@selector(jumpToPreviousCounterpart:) to:nil from:self];
+        [XcodeHelper moveSourceCode:self];
     }
 }
 
