@@ -12,11 +12,18 @@
 #import "NSTextView+HM_Extends.h"
 #import "XcodeHelper.h"
 
+@interface GenerateFuncDefinitionAction()
+
+@property(nonatomic) NSArray* extentions;
+
+@end
+
 @implementation GenerateFuncDefinitionAction
 
--(id)initWithNSTextView:(NSTextView*)textView andDocument:(IDESourceCodeDocument*)document  {
+-(id)initWithTextView:(NSTextView*)textView andDocument:(IDESourceCodeDocument*)document  {
     self = [super init];
     if( self ) {
+        self.extentions = @[@"h"];
         self.sourceCodeView = textView;
         self.sourceDocument = document;
     }
@@ -28,9 +35,12 @@
     return [[self.sourceCodeView ex_currentLine] ex_isFunctionDeclaration];
 }
 
--(void)action {
+-(BOOL)isEnableExtension:(NSString*)extension {
+    return [self.extentions containsObject:extension];
+}
+
+-(void)run {
     // expect isEnable == YES
-    
     NSString* declaration = [self.sourceCodeView ex_currentLine];
     
     // ソースコード上に関数定義が存在するかチェックする
@@ -40,7 +50,8 @@
     NSString* sourceText = sourceView.textStorage.string;
     NSString* className = [self.sourceDocument.fileURL.absoluteString ex_className];
     NSString* definition = [declaration ex_toDefinition];
-    BOOL hasNotFunction = [sourceText ex_hasNotFunctionDefinition:declaration inClass:className];
+    BOOL hasNotFunction = [sourceText ex_hasNotFunctionDefinition:declaration
+                                                          inClass:className];
     DbgLog(@"has decl=%d class=%@", hasNotFunction, className);
     
     // ヘッダーに関数定義が無い場合にのみ追加する
@@ -49,7 +60,9 @@
         NSRange endPoint = [sourceText ex_getClassImplementationEnd:className];
         if( RANGE_IS_FOUND(endPoint) ) {
             endPoint.length = 0;
-            [sourceView insertText:[definition stringByAppendingString:@"\n"] replacementRange:endPoint];
+            NSString* definitionWithNewLine = [definition stringByAppendingString:@"\n"];
+            [sourceView insertText:definitionWithNewLine
+                  replacementRange:endPoint];
         }
     }
     // ソースコードに戻る

@@ -38,7 +38,7 @@
         return NO;
     }
     
-    // 行中に;が無いことを調べる
+    // 行中に;があることを調べる。
     return [trimmedStr ex_hasCharas:@";" withOption:NSBackwardsSearch];
 }
 

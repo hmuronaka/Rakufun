@@ -30,4 +30,8 @@
     return [text ex_searchFuncDefinition:[self ex_cursolPosition]];
 }
 
+-(BOOL)ex_currentIsFuncDeclaration {
+    return [[self ex_currentLine] ex_isFunctionDeclaration];
+}
+
 @end

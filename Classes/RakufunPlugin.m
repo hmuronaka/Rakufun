@@ -13,6 +13,8 @@
 #import "XcodeHelper.h"
 #import "NSString+HM_Extends.h"
 #import "NSString+HM_SourceCode.h"
+#import "GenerateFuncDefinitionAction.h"
+#import "GenerateFuncDelcarationAction.h"
 
 // メニューのショートカットキー
 // 必要に応じて変更してください.
@@ -102,35 +104,50 @@ static RakufunPlugin* _sharedInstance = nil;
         return;
     }
     
-    // シグネチャを取得する
-    NSString* signatureStr = [textView ex_currentFunctionSignature];
-    DbgLog(@"signature=%@", signatureStr);
-    
-    // 現在のカーソル行が、関数定義であれば、ヘッダーに関数宣言を追加する
-    if( signatureStr != nil ) {
-        // ソースファイルからヘッダーファイルにジャンプ
-        [XcodeHelper moveSourceCode:self];
-        
-        // ヘッダーを解析する
-        NSTextView* headerView = [XcodeHelper currentSourceCodeView];
-        NSString* headerText = headerView.textStorage.string;
-        NSString* className = [document.fileURL.absoluteString ex_className];
-        NSString* declStr = [signatureStr ex_toDeclaration];
-        BOOL hasNotFunction = [headerText ex_hasNotFunctionDeclaration:declStr inClass:className];
-        DbgLog(@"has decl=%d class=%@", hasNotFunction, className);
-        
-        // ヘッダーに関数定義が無い場合にのみ追加する
-        // *ただしコメントアウト行は考慮しない。
-        if(hasNotFunction) {
-            NSRange endPoint = [headerText ex_getClassInterfaceEndPos:className];
-            if( RANGE_IS_FOUND(endPoint) ) {
-                endPoint.length = 0;
-                [headerView insertText:[declStr stringByAppendingString:@"\n"] replacementRange:endPoint];
-            }
+    if( [@[@"m", @"mm"] containsObject:pathExtension] ) {
+        if( [textView ex_currentFunctionSignature] != nil ) {
+            GenerateFuncDelcarationAction* action = [[GenerateFuncDelcarationAction alloc] initWithTextView:textView andDocument:document];
+            [action run];
         }
-        // ソースコードに戻る
-        [XcodeHelper moveSourceCode:self];
+    } else if( [@[@"h"] containsObject:pathExtension] ) {
+        if( [textView ex_currentIsFuncDeclaration] ) {
+            DbgLog(@"currentFunctionSignature=%@", [textView ex_currentLine]);
+            GenerateFuncDefinitionAction* action = [[GenerateFuncDefinitionAction alloc] initWithTextView:textView andDocument:document];
+            [action run];
+        }
     }
+    
+    
+    
+//    // シグネチャを取得する
+//    NSString* signatureStr = [textView ex_currentFunctionSignature];
+//    DbgLog(@"signature=%@", signatureStr);
+//    
+//    // 現在のカーソル行が、関数定義であれば、ヘッダーに関数宣言を追加する
+//    if( signatureStr != nil ) {
+//        // ソースファイルからヘッダーファイルにジャンプ
+//        [XcodeHelper moveSourceCode:self];
+//        
+//        // ヘッダーを解析する
+//        NSTextView* headerView = [XcodeHelper currentSourceCodeView];
+//        NSString* headerText = headerView.textStorage.string;
+//        NSString* className = [document.fileURL.absoluteString ex_className];
+//        NSString* declStr = [signatureStr ex_toDeclaration];
+//        BOOL hasNotFunction = [headerText ex_hasNotFunctionDeclaration:declStr inClass:className];
+//        DbgLog(@"has decl=%d class=%@", hasNotFunction, className);
+//        
+//        // ヘッダーに関数定義が無い場合にのみ追加する
+//        // *ただしコメントアウト行は考慮しない。
+//        if(hasNotFunction) {
+//            NSRange endPoint = [headerText ex_getClassInterfaceEndPos:className];
+//            if( RANGE_IS_FOUND(endPoint) ) {
+//                endPoint.length = 0;
+//                [headerView insertText:[declStr stringByAppendingString:@"\n"] replacementRange:endPoint];
+//            }
+//        }
+//        // ソースコードに戻る
+//        [XcodeHelper moveSourceCode:self];
+//    }
 }
 
 // 生成対象の拡張子か

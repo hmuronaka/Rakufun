@@ -13,4 +13,5 @@
 -(NSInteger)ex_cursolPosition;
 -(NSString*)ex_currentLine;
 -(NSString*)ex_currentFunctionSignature;
+-(BOOL)ex_currentIsFuncDeclaration;
 @end
