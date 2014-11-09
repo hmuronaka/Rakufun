@@ -21,4 +21,5 @@
 -(NSRange)ex_getClassInterfaceBeginPos:(NSString*)className;
 -(NSRange)ex_getClassInterfaceEndPos:(NSString*)className;
 -(NSRange)ex_getClassImplementationEnd:(NSString*)className;
+
 @end

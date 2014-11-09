@@ -59,10 +59,13 @@
     if(hasNotFunction) {
         NSRange endPoint = [sourceText ex_getClassImplementationEnd:className];
         if( RANGE_IS_FOUND(endPoint) ) {
+            // 改行が含まれるため、次の位置から置換する
             endPoint.length = 0;
             NSString* definitionWithNewLine = [definition stringByAppendingString:@"\n"];
             [sourceView insertText:definitionWithNewLine
                   replacementRange:endPoint];
+        } else {
+            DbgLog(@"class end is not found.className=%@", className);
         }
     }
     // ソースコードに戻る

@@ -116,6 +116,7 @@
         return NO;
     }
    
+    DbgLog(@"function declaration=%@", functionDeclaration);
     NSRange result = [self rangeOfString:functionDeclaration options:0 range:NSMakeRange(classBeginPos.location, self.length - classBeginPos.location)];
     if( RANGE_IS_FOUND(result) ) {
         return NO;
@@ -132,10 +133,25 @@
         return NO;
     }
     
+    NSRange classEndPos = [self ex_getClassImplementationEnd:className];
+    if( RANGE_IS_NOT_FOUND(classEndPos) ) {
+        DbgLog(@"%@ end is not found", className);
+        return NO;
+    }
     
-    NSString* signature = [functionDeclaration ex_replaceFrom:@";" to:@"{"];
-    NSRange result = [self rangeOfString:signature];
+    // シグネチャから正規表現を生成する。
+    NSString* signature = [functionDeclaration ex_replaceFrom:@";" to:@""];
+    signature = [signature ex_trimWhitespaces];
+    signature = [signature ex_escapeMetaCharacters:[NSCharacterSet characterSetWithCharactersInString:@"()*"]];
+    NSString* pattern = [NSString stringWithFormat:@"\n\\s*%@\\s*\\{",signature];
+    DbgLog(@"signature=%@", pattern);
+    
+    // ソースコード上にシグネチャが存在しなければYESを返す。
+    NSRange fromRange = NSMakeRange(classBeginPos.location, classEndPos.location - classBeginPos.location);
+    NSRange result = [self ex_findWithPattern:pattern fromRange:fromRange];
     if( RANGE_IS_FOUND(result)) {
+        DbgLogRange(@"fromRange", fromRange);
+        DbgLogRange(@"result", result);
         return NO;
     }
     return YES;
@@ -143,41 +159,11 @@
 
 // クラス実装の開始位置を取得する
 -(NSRange)ex_getClassImplementationBeginPos:(NSString*)className {
-//    // expect className == "NSString"
-//    // expect className == "NSString+Extends"
-//    NSArray* classNameAndCategory = [className ex_divideClassNameAndCategory];
-//    
-//    NSString* pattern = nil;
-//    if( classNameAndCategory.count >= 2) {
-//        pattern = [NSString stringWithFormat:@"@implementation\\s*%@\\s*\\(\\s*%@\\b\\s*\\)",
-//                   classNameAndCategory[0],
-//                   classNameAndCategory[1]];
-//    } else {
-//        pattern = [NSString stringWithFormat:@"@implementation\\s*%@\\b",
-//                   classNameAndCategory[0]];
-//    }
-//    NSRange range = [self ex_findWithPattern:pattern];
-//    return range;
     return [self ex_getClassBeginPos:className withKeyword:@"implementation"];
 }
 
 // @interface クラス名の開始位置を返す
 -(NSRange)ex_getClassInterfaceBeginPos:(NSString*)className {
-//    // expect className == "NSString"
-//    // expect className == "NSString+Extends"
-//    NSArray* classNameAndCategory = [className ex_divideClassNameAndCategory];
-//    
-//    NSString* pattern = nil;
-//    if( classNameAndCategory.count >= 2) {
-//        pattern = [NSString stringWithFormat:@"@interface\\s*%@\\s*\\(\\s*%@\\b\\s*\\)",
-//                   classNameAndCategory[0],
-//                   classNameAndCategory[1]];
-//    } else {
-//        pattern = [NSString stringWithFormat:@"@interface\\s*%@\\b",
-//                   classNameAndCategory[0]];
-//    }
-//    NSRange range = [self ex_findWithPattern:pattern];
-//    return range;
     return [self ex_getClassBeginPos:className withKeyword:@"interface"];
 }
 
@@ -203,24 +189,29 @@
 }
 
 // @endの位置を返す
+// @endは行頭にあると想定する
+// コメント中がどうかは考慮しない
 -(NSRange)ex_getClassInterfaceEndPos:(NSString*)className {
     // expect className == "NSString"
     // expect className == "NSString+Extends"
     
     NSRange classBeginPos = [self ex_getClassInterfaceBeginPos:className];
-    NSRange result = [self rangeOfString:@"@end" options:0 range:NSMakeRange(classBeginPos.location, self.length - classBeginPos.location)];
+    NSRange result = [self ex_findWithPattern:@"\\n\\s*@end\\b" fromRange:NSMakeRange(classBeginPos.location, self.length - classBeginPos.location)];
+    result = [self rangeOfString:@"@end" options:0 range:result];
     return result;
 }
 
+// @endの位置を返す
+// @endは行頭にあると想定する
+// コメント中がどうかは考慮しない
 -(NSRange)ex_getClassImplementationEnd:(NSString*)className {
     // expect className == "NSString"
     // expect className == "NSString+Extends"
     
     NSRange classBeginPos = [self ex_getClassImplementationBeginPos:className];
-    NSRange result = [self rangeOfString:@"@end" options:0 range:NSMakeRange(classBeginPos.location, self.length - classBeginPos.location)];
+    NSRange result = [self ex_findWithPattern:@"\\n\\s*@end\\b" fromRange:NSMakeRange(classBeginPos.location, self.length - classBeginPos.location)];
+    result = [self rangeOfString:@"@end" options:0 range:result];
     return result;
 }
-
-
 
 @end

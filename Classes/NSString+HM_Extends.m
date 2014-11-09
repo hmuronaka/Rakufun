@@ -98,7 +98,20 @@
     return result;
 }
 
-
-
+// 指定した文字セットに対してエスケープをする
+-(NSString*)ex_escapeMetaCharacters:(NSCharacterSet*)charaSet {
+    NSMutableString* str = [NSMutableString stringWithString:self];
+    NSRange range = NSMakeRange(0, self.length);
+    while( true ) {
+        range = [str rangeOfCharacterFromSet:charaSet options:0 range:range];
+        if( RANGE_IS_NOT_FOUND(range) ) {
+            break;
+        }
+        [str insertString:@"\\" atIndex:range.location];
+        range.location += 2;
+        range.length = self.length - range.location;
+    }
+    return [NSString stringWithString:str];
+}
 
 @end

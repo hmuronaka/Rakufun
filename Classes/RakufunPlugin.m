@@ -100,9 +100,6 @@ static RakufunPlugin* _sharedInstance = nil;
     IDESourceCodeDocument* document = [XcodeHelper currentDocument];
     NSString* pathExtension = [document.fileURL.absoluteString pathExtension];
     DbgLog(@"fileType=%@", pathExtension);
-    if( ![self isTargetExtension:pathExtension] ) {
-        return;
-    }
     
     if( [@[@"m", @"mm"] containsObject:pathExtension] ) {
         if( [textView ex_currentFunctionSignature] != nil ) {
@@ -110,6 +107,7 @@ static RakufunPlugin* _sharedInstance = nil;
             [action run];
         }
     } else if( [@[@"h"] containsObject:pathExtension] ) {
+        DbgLog(@"This is header");
         if( [textView ex_currentIsFuncDeclaration] ) {
             DbgLog(@"currentFunctionSignature=%@", [textView ex_currentLine]);
             GenerateFuncDefinitionAction* action = [[GenerateFuncDefinitionAction alloc] initWithTextView:textView andDocument:document];

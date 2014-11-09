@@ -21,4 +21,6 @@
 -(NSRange)ex_findWithPattern:(NSString*)pattern fromRange:(NSRange)range;
 -(NSRange)ex_findWithPattern:(NSString*)pattern fromRange:(NSRange)range andIsBackwward:(BOOL)isBackwards;
 -(NSString*)ex_getLineFromPos:(NSInteger)pos;
+-(NSString*)ex_escapeMetaCharacters:(NSCharacterSet*)charaSet;
+
 @end
